@@ -1,0 +1,23 @@
+name: "Delete untagged images"
+description: "Deletes all untagged container images from the given repository"
+branding:
+  icon: "trash-2"
+  color: "red"
+inputs:
+  token:
+    required: true
+    description: "GitHub token used to authenticate to the GitHub API"
+  owner:
+    required: true
+    description: "GitHub owner of the repository to delete untagged images from"
+  repository:
+    required: true
+    description: "GitHub repository to delete untagged images from"
+runs:
+  using: "composite"
+  steps:
+    - name: "Trigger script"
+      shell: bash
+      run: |
+        python main.py "${{ inputs.token }}" "${{ inputs.owner }}" "${{ inputs.repository }}"
+  
