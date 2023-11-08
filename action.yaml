@@ -20,5 +20,5 @@ runs:
       shell: bash
       run: |
         cd ${{github.action_path}}
-        python main.py "${{ inputs.token }}" "${{ inputs.owner }}" "${{ inputs.repository }}"
+        python main.py --owner ${{ inputs.owner }} --repository "${{ inputs.repository }}" --token "${{ inputs.token }}"
   
