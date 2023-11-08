@@ -19,6 +19,8 @@ def get_packages(token: str) -> list:
             "X-GitHub-Api-Version": "2022-11-28",
         },
     )
+    if response.status_code != 200:
+        raise Exception("Failed to get packages")
     data = response.json()
     return data
 
@@ -54,6 +56,8 @@ def get_versions_of_package(token: str, owner: str, package_name: str) -> list:
             "X-GitHub-Api-Version": "2022-11-28",
         },
     )
+    if response.status_code != 200:
+        raise Exception(f"Failed to get versions of {package_name}")
     data = response.json()
     with open(f"./temp_versions-{package_name}.json", "w") as file:
         json.dump(data, file, indent=4)
