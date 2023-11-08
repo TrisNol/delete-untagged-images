@@ -19,5 +19,6 @@ runs:
     - name: "Trigger script"
       shell: bash
       run: |
+        cd ${{github.action_path}}
         python main.py "${{ inputs.token }}" "${{ inputs.owner }}" "${{ inputs.repository }}"
   

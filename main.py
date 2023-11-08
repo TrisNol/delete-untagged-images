@@ -24,6 +24,16 @@ def get_packages(token: str) -> list:
 
 
 def filter_packages(owner: str, repository: str, data: list) -> list:
+    """Filters out the packages that do not originate from the given repository
+
+    Args:
+        owner (str): Owner of the repository
+        repository (str): Name of the repository
+        data (list): List of packages
+
+    Returns:
+        list: List of packages that originate from the given repository
+    """
     filtered_data = []
     for entry in data:
         if (
@@ -67,7 +77,7 @@ def filter_untagged_package_versions(data: list) -> list:
 
 
 def delete_package_version(token: str, entry: dict) -> None:
-    """_summary_
+    """Deletes the given package version
 
     Args:
         token (str): Access token
