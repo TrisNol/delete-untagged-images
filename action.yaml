@@ -20,5 +20,6 @@ runs:
       shell: bash
       run: |
         cd ${{github.action_path}}
+        pip install requests
         python main.py --owner ${{ inputs.owner }} --repository "${{ inputs.repository }}" --token "${{ inputs.token }}"
   
